@@ -1,0 +1,144 @@
+/* 여기서 showing 이 greetingForm 이나 greeting 보다 위로 오면 출력이 안됨. 순서가 중요. */
+HEAD :root {
+	--greyColor: rgba(0, 0, 0, 0.5);
+	--lightGrey: rgba(0, 0, 0, 0.3);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.showing:hover {
+	box-shadow: 0 3px 6px 0 rgba(32, 33, 36, 0.28);
+	border-color: rgba(223, 225, 229, 0);
+}
+
+.js-todoForm,
+.greetingForm {
+	all: unset;
+	width: 100%;
+}
+.js-todoForm:hover {
+	box-shadow: 0 3px 6px 0 rgba(32, 33, 36, 0.28);
+	border-color: rgba(223, 225, 229, 0);
+}
+
+.todoList:hover {
+	box-shadow: 0 3px 6px 0 rgba(32, 33, 36, 0.28);
+	border-color: rgba(223, 225, 229, 0);
+}
+
+.todoList {
+	background: var(--greyColor);
+	display: flex;
+	border-radius: 14px;
+	border-radius: 14px;
+	box-shadow: none;
+	z-index: 3;
+	margin: 0 auto;
+	width: 50px;
+}
+
+.greetingForm,
+.greeting {
+	display: none;
+}
+
+.showing {
+	display: block;
+	margin: 5px 0px 10px 0px;
+	font-size: 26px;
+}
+
+.js-clockTitle {
+	margin: 5px 0px;
+}
+
+input,
+.js-greetingTitle {
+	all: unset;
+	width: 100%;
+	color: white;
+}
+
+.js-todoTitle {
+	color: white;
+}
+
+:-webkit-autofill {
+	color: #fff !important;
+}
+
+body {
+	background-color: #364a5e;
+	color: rgb(197, 195, 195);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.bgImages {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	animation: fadeIn 0.5s linear;
+}
+
+.maininfo {
+	display: grid;
+	height: 100vh;
+	grid-gap: 5px;
+	place-content: center center;
+}
+
+ul,
+li {
+	list-style-type: none;
+}
+
+.todoList {
+	font-size: 23px;
+	display: flex;
+	justify-content: space-between;
+	padding-left: 10px;
+}
+
+.todoList {
+	display: grid;
+	grid-template-columns: 6fr 2fr 2fr;
+	width: 100%;
+}
+
+.js-todoList {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 5px;
+	padding: 0;
+}
+
+button {
+	background-color: var(--greyColor);
+	color: white;
+	border: none;
+	border-radius: 14px;
+	width: auto;
+	padding: 0;
+}
+
+.ListTitle {
+	margin-right: 50px;
+}
+
+form {
+	margin-left: 0px;
+	padding-left: 0px;
+}
