@@ -8,14 +8,14 @@ function saveCoords(coordsObj) {
 }
 
 function SuccessGetGeo(position) {
-	const latitude = position.coords.latitude;
-	const longitude = position.coords.longitude;
+	const lat = position.coords.latitude;
+	const lon = position.coords.longitude;
 	const coordsObj = {
-		latitude,
-		longitude
+		lat,
+		lon
 	};
 	saveCoords(coordsObj);
-	getWeather(latitude, longitude);
+	getWeather(coordsObj);
 }
 
 function errorGeo() {
@@ -26,24 +26,26 @@ function askForWeather() {
 	navigator.geolocation.getCurrentPosition(SuccessGetGeo, errorGeo);
 }
 
-function getWeather(lat, lon) {
-	fetch('https://api.openweathermap.org/data/2.5/weather?lat=`${lat}`&lon=`${lon}`&appid=WEATHER_KEY')
-		.then(function(Response) {
-			return Response.blob();
-		})
-		.then(function() {
-			console.log();
-			weatherForm.innerHTML = '';
+function getWeather(coordsObj) {
+	fetch(
+		`${'https://api.openweathermap.org/data/2.5/weather?'}lat=${coordsObj.lat}&lon=${coordsObj.lon}&appid=${WEATHER_KEY}&units=metric`
+	)
+		.then((response) => response.json())
+		.then((json) => {
+			const name = json.name;
+			const temperature = json.main.temp;
+			weatherForm.innerHTML = `${Math.floor(temperature)}˚@${name}`;
 		});
 }
 
 function loadWeather() {
 	const currentWeahter = localStorage.getItem('WEAHTER_LS');
-	if (currentWeahter === null) {
-		askForWeather();
-	} else {
+	if (currentWeahter !== null) {
 		const savedWeather = JSON.parse(currentWeahter);
 		getWeather(savedWeather);
+		console.log(getWeather(savedWeather));
+	} else {
+		askForWeather();
 	}
 }
 

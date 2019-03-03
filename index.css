@@ -13,11 +13,20 @@ HEAD :root {
 	border-color: rgba(223, 225, 229, 0);
 }
 
+input {
+	font-size: 24px;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid grey;
+}
+
 .js-todoForm,
 .greetingForm {
 	all: unset;
 	width: 100%;
+	color: white;
 }
+
 .js-todoForm:hover {
 	box-shadow: 0 3px 6px 0 rgba(32, 33, 36, 0.28);
 	border-color: rgba(223, 225, 229, 0);
@@ -63,6 +72,7 @@ input,
 
 .js-todoTitle {
 	color: white;
+	font-size: 24px;
 }
 
 :-webkit-autofill {
